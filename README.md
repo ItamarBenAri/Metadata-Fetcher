@@ -126,7 +126,7 @@ The **Metadata Fetcher** is a full-stack application that allows users to input 
 
 ## Author <a name="author"></a>
 **Itamar Ben Ari**
-- My Website: [Itamar Ben Ari](www.itamar-ben-ari.com)
+- My Website: [Itamar Ben Ari](https://itamar-ben-ari.com)
 - GitHub: [Itamar Ben Ari](https://github.com/ItamarBenAri)
 - LinkedIn: [Itamar Ben Ari](https://www.linkedin.com/in/itamar-ben-ari-69678b28b/)
 
