@@ -1,0 +1,17 @@
+.FetchDataResult {
+    margin-top: 20px;
+}
+
+.FetchDataResult .urlResult {
+    margin-bottom: 20px;
+}
+
+.FetchDataResult .url {
+    word-break: break-all; 
+    overflow-wrap: break-word;
+}
+
+.FetchDataResult img {
+    width: 100px;
+    height: 100px;
+}

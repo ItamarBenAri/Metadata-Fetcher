@@ -1,0 +1,59 @@
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 0.8rem 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Header .logo {
+    display: block;
+    align-items: center;
+    width: 100%;
+    color: #2c3e50;
+    position: relative;
+}
+
+.Header .logoLink {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2c3e50;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Header .logoNameSmallScreen {
+    font-size: 23px;
+}
+
+.Header .logoNameLargeScreen {
+    font-size : 40px;
+}
+
+@media (max-width: 650px) {
+    .Header .logoSmallScreen {
+        display: block;
+    }
+    .Header .logoLargeScreen {
+        display: none;
+    }
+}
+
+@media (min-width: 650px) {
+    .Header .logoSmallScreen {
+        display: none;
+    }
+    
+    .Header .logoLargeScreen {
+        display: block;
+    }
+}

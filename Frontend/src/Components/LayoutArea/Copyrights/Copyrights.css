@@ -1,0 +1,12 @@
+.Copyrights .SocialMediaLinks {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Copyrights .SocialMediaLinks .divider {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 60%;
+}

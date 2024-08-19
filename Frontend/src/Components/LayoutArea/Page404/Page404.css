@@ -1,0 +1,27 @@
+.page404 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.page404 > img {
+	width: 100%;
+}
+
+@media (max-width: 500px) {
+    .page404 > img {
+        min-width: 380px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+    .page404 > img {
+        min-width: 580px;
+    }
+}
+
+@media (min-width: 767px) {
+    .page404 > img {
+        max-width: 620px;
+    }
+}
