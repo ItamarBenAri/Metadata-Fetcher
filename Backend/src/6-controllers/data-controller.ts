@@ -37,11 +37,18 @@ class DataController {
             response.setHeader('Content-Type', 'application/json'); // Set JSON response header.
             response.setHeader('Transfer-Encoding', 'chunked'); // Enable chunked transfer encoding for streaming.
 
+            response.write('['); // Start JSON array.
+
+            let first = true;
             for (const url of urls) {
+                if (!first) response.write(',\n'); // Separate objects with commas and newlines.
+                first = false;
+
                 const metadata = await dataService.fetchMetadata(url); // Fetch metadata for each URL.
-                response.write(JSON.stringify(metadata)); // Write metadata as a JSON string.
+                response.write(JSON.stringify(metadata) + '\n'); // Write metadata as a JSON string.
             }
 
+            response.write(']'); // Close JSON array.
             response.end(); // End response.
         } catch (err: any) {
             next(err); // Pass errors to error-handling middleware.

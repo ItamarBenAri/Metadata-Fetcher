@@ -25,10 +25,12 @@ class MetadataService {
                 done = readerDone;
 
                 if (value) {
-                    const chunk = decoder.decode(value, { stream: true }); // Decode the chunk                
-                    const metadata = JSON.parse(chunk) as MetadataModel; // Parse the JSON chunk
-                    const action = metadataActionCreators.addOne(metadata); // Create an action to add the metadata
-                    appStore.dispatch(action); // Dispatch the action to update the state
+                    const chunk = decoder.decode(value, { stream: true }); // Decode the chunk
+                    if (chunk !== '[') { // Skip the opening array bracket
+                        const metadata = JSON.parse(chunk.slice(0, chunk.length - 2)) as MetadataModel; // Parse the JSON chunk
+                        const action = metadataActionCreators.addOne(metadata); // Create an action to add the metadata
+                        appStore.dispatch(action); // Dispatch the action to update the state
+                    }
                 }
             }
         }
