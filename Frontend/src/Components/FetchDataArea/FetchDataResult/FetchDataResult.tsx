@@ -29,6 +29,7 @@ export function FetchDataResult(): JSX.Element {
 
     return (
         <div className="FetchDataResult" data-aos="fade-up">
+            <p>🎉 Notice! As soon as the data from each URL is ready, it will pop up instantly—no need to wait for the others! 🚀</p>
             {/* Check if metadata exists and has results */}
             {metadata && metadata.length > 0 && (
                 metadata.map((metadataResult) => (

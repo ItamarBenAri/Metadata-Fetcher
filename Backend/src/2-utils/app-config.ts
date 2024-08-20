@@ -13,7 +13,10 @@ class AppConfig {
     public readonly isDevelopment = process.env.NODE_ENV === "development";
     public readonly isProduction = process.env.NODE_ENV === "production";
     public readonly port = 4000;
-    public readonly corsOptions = { credentials: true, origin: 'http://localhost:3000' };
+    public readonly corsOptions = {
+        credentials: true,
+        origin: ['http://localhost:3000', 'https://metadata-fetcher-frontend.onrender.com']
+    };
     public readonly limiter = rateLimit({
         windowMs: 1000, // 1 second time window
         max: 5, // Maximum 5 requests per IP per windowMs
