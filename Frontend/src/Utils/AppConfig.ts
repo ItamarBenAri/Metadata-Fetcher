@@ -52,4 +52,4 @@ class ProdConfig {
     }
 }
 
-export const appConfig = new DevConfig(); // Export production configuration as the default
+export const appConfig = new ProdConfig(); // Export production configuration as the default
