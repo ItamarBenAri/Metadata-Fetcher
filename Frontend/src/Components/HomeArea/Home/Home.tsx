@@ -13,8 +13,8 @@ function Home(): JSX.Element {
     const metadata = useSelector<AppState, MetadataModel[]>(appState => appState.metadata);
 
     useEffect(() => {
-        csrfTokenService.storeCsrfTokenInCookie();
-    }, []);
+        csrfTokenService.storeCsrfTokenInCookie();        
+    }, [metadata]);
 
     return (
         <div className="Home">

@@ -1,3 +1,4 @@
+import { jsonrepair } from "jsonrepair";
 import MetadataModel from "../Models/MetadataModel";
 import { metadataActionCreators } from "../Redux/MetadataSlice";
 import { appStore } from "../Redux/Store";
@@ -26,10 +27,14 @@ class MetadataService {
 
                 if (value) {
                     const chunk = decoder.decode(value, { stream: true }); // Decode the chunk
-                    if (chunk !== '[') { // Skip the opening array bracket
-                        const metadata = JSON.parse(chunk.slice(0, chunk.length - 2)) as MetadataModel; // Parse the JSON chunk
-                        const action = metadataActionCreators.addOne(metadata); // Create an action to add the metadata
-                        appStore.dispatch(action); // Dispatch the action to update the state
+                    const fixedJson = jsonrepair(chunk);
+                    if (Array.isArray(fixedJson)) {
+                        // Iterate over each element in the array
+                        fixedJson.forEach(el => {
+                            this.parseAndDispatch(el) // Dispatch the action to update the state
+                        });
+                    } else {
+                        this.parseAndDispatch(fixedJson);
                     }
                 }
             }
@@ -37,6 +42,12 @@ class MetadataService {
         catch (err: any) {
             console.error(err);
         }
+    }
+
+    private parseAndDispatch(str: string) {
+        const metadata = JSON.parse(str) as MetadataModel; // Parse the JSON chunk                        
+        const action = metadataActionCreators.addOne(metadata); // Create an action to add the metadata
+        appStore.dispatch(action); // Dispatch the action to update the state
     }
 }
 

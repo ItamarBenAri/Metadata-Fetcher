@@ -24,12 +24,11 @@ export function FetchDataResult(): JSX.Element {
 
     // Initialize AOS animation on component mount
     useEffect(() => {        
-        AOS.init({ duration: 1000, once: true });        
+        AOS.init({ duration: 1000, once: true });
     }, []);
 
     return (
         <div className="FetchDataResult" data-aos="fade-up">
-            <p>🎉 Notice! As soon as the data from each URL is ready, it will pop up instantly—no need to wait for the others! 🚀</p>
             {/* Check if metadata exists and has results */}
             {metadata && metadata.length > 0 && (
                 metadata.map((metadataResult) => (

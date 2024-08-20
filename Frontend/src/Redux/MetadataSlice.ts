@@ -8,8 +8,13 @@ import MetadataModel from "../Models/MetadataModel";
  * @param action - The action containing the new metadata object to add.
  * @returns The updated state array with the new metadata added.
  */
-function addOne(currentState: MetadataModel[], action: PayloadAction<MetadataModel>): MetadataModel[] {
-    return [...currentState, action.payload];
+function addOne(currentState: MetadataModel[], action: PayloadAction<MetadataModel | MetadataModel[]>): MetadataModel[] {
+    // Check if the payload is an array or a single object
+    if (Array.isArray(action.payload)) {
+        return [...currentState, ...action.payload]; // Add all items from the array
+    } else {
+        return [...currentState, action.payload]; // Add the single item
+    }
 }
 
 /**
