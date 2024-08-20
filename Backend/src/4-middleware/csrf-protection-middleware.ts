@@ -15,8 +15,14 @@ class CsrfProtectionMiddleware {
      * @param response - Express response object
      * @param next - Express next function to pass control to the next middleware
      */
-    public protect(request: Request, response: Response, next: NextFunction): void {        
-        const csrfProtection = csrf({ cookie: true }); // Initialize CSRF protection using cookies
+    public protect(request: Request, response: Response, next: NextFunction): void {
+        const csrfProtection = csrf({
+            cookie: {
+                httpOnly: true,
+                secure: true, // Requires HTTPS
+                sameSite: "none" // Enables cross-origin requests
+            }
+        });
         csrfProtection(request, response, next); // Apply CSRF protection middleware
     }
 }
