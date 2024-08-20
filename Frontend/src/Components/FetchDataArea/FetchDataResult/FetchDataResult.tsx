@@ -24,7 +24,7 @@ export function FetchDataResult(): JSX.Element {
 
     // Initialize AOS animation on component mount
     useEffect(() => {        
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: true });        
     }, []);
 
     return (
