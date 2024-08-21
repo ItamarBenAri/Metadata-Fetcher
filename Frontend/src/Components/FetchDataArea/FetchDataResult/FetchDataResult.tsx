@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import MetadataModel from "../../../Models/MetadataModel";
 import "./FetchDataResult.css";
 import AOS from 'aos';
@@ -22,14 +22,16 @@ export function FetchDataResult(): JSX.Element {
 
     // Access metadata from Redux store
     const metadata = useSelector<AppState, MetadataModel[]>(appState => appState.metadata);
-
+    const resultRef = useRef<HTMLDivElement>(null); // Reference to scroll to results
+    
     // Initialize AOS animation on component mount
     useEffect(() => {        
         AOS.init({ duration: 1000, once: true });
+        resultRef.current?.scrollIntoView({ behavior: "smooth" }); // Scroll to results on success
     }, []);
 
     return (
-        <div className="FetchDataResult" data-aos="fade-up">
+        <div className="FetchDataResult" data-aos="fade-up" ref={resultRef}>
             <p>🎉 Notice! As soon as the data from each URL is ready, it will pop up instantly—no need to wait for the others! 🚀</p>
             <Divider variant="middle" />
             {/* Check if metadata exists and has results */}

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Box, Button, CircularProgress, TextField, IconButton } from "@mui/material";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -17,7 +17,6 @@ export function FetchDataForm(): JSX.Element {
     const { register, handleSubmit, formState: { errors }, reset } = methods;
     const [urlsSending, setUrlsSending] = useState<boolean>(false); // Loading state
     const [urlFields, setUrlFields] = useState<Array<keyof FormModel>>(["url1", "url2", "url3"]); // Initial form fields
-    const resultRef = useRef<HTMLDivElement>(null); // Reference to scroll to results
 
     // Add a new URL input field
     const addUrlField = () => {
@@ -42,9 +41,6 @@ export function FetchDataForm(): JSX.Element {
         setUrlsSending(true); // Set loading state
         const urls = Object.values(data).filter(Boolean); // Extract and filter non-empty URLs
         metadataService.getMetadata(urls)
-            .then(() => {
-                resultRef.current?.scrollIntoView({ behavior: "smooth" }); // Scroll to results on success
-            })
             .catch((err: any) => notify.error(err)) // Notify on error
             .finally(() => setUrlsSending(false)); // Reset loading state
     };
