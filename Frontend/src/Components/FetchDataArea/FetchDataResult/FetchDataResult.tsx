@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector } from "react-redux";
 import { AppState } from "../../../Redux/AppState";
+import { Divider } from "@mui/material";
 
 /**
  * FetchDataResult component renders metadata results in a table format.
@@ -29,6 +30,8 @@ export function FetchDataResult(): JSX.Element {
 
     return (
         <div className="FetchDataResult" data-aos="fade-up">
+            <p>🎉 Notice! As soon as the data from each URL is ready, it will pop up instantly—no need to wait for the others! 🚀</p>
+            <Divider variant="middle" />
             {/* Check if metadata exists and has results */}
             {metadata && metadata.length > 0 && (
                 metadata.map((metadataResult) => (
