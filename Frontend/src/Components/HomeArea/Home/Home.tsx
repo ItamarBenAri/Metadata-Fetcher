@@ -14,7 +14,7 @@ function Home(): JSX.Element {
 
     useEffect(() => {
         csrfTokenService.storeCsrfTokenInCookie();        
-    }, [metadata]);
+    }, []);
 
     return (
         <div className="Home">
